@@ -1,3 +1,5 @@
+package clients;
+
 public class DownloadClient implements Runnable{
 
     @Override
