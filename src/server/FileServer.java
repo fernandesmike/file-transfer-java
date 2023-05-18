@@ -21,18 +21,14 @@ public class FileServer implements Runnable {
         try (ServerSocket server = new ServerSocket(5000);
              Socket connection = server.accept())
         {
-            uploadFile(connection);
-
-            if (server.isClosed()) {
-                System.out.println("Server offline.");
-            }
+            uploadFromClient(connection);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void uploadFile(Socket connection ) {
+    private void uploadFromClient(Socket connection ) {
 
         File imgFile = new File(imgPath);
 
@@ -56,5 +52,6 @@ public class FileServer implements Runnable {
         }
 
         System.out.println("Server: Image uploaded at: " + uploadedFile.getAbsolutePath());
+        System.out.println("Server offline");
     }
 }
